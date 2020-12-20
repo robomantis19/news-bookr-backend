@@ -1,8 +1,12 @@
 // Update with your config settings.
+require('dotenv').config();
+
 const localPg = {
   host:'localhost', 
-  port: 5432, 
-  database: 'housing-busters', 
+  port: 5432,
+  //password: 'postgres',
+  database: 'housing-busters'
+  
 }
 const heroku = process.env.DATABASE_URL + '?ssl=true'
 
@@ -11,12 +15,14 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: localPGConnection
+    connection: localPg
   },
+
+
 
   staging: {
     client: 'pg',
-    connection: localPGConnection,
+    connection: localPg,
     pool: {
       min: 2,
       max: 10
@@ -29,7 +35,7 @@ module.exports = {
   production: {
     client: 'pg',
     useNullAsDefault: true, 
-    connection: heroku,
+    connection: localPg,
     migrations: {
       directory: './migrations'
     },
