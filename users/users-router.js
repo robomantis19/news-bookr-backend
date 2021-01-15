@@ -18,8 +18,9 @@ router.post("/register", (req, res) => {
           res.status(200).json({id: user.id}); 
 
       })
-      .catch(error => { 
-          res.status(500).json({ errorMessage: error }); 
+      .catch(err => { 
+          console.log({errorMessage: err})
+          res.status(500).json({ errorMessage: err }); 
       });
 });
 

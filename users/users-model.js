@@ -21,7 +21,7 @@ async function findBy(email){
 
 async function add(user) { 
     //come back to this line, where error is.
-    const [id] = await db('users').insert(user); 
+    const [id] = await db('users').insert(user).returning('id');
     console.log('id', id); 
     return getUserById(id); 
 }
