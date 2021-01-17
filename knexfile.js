@@ -8,7 +8,7 @@ const localPg = {
   database: 'housing-busters'
   
 }
-const heroku = process.env.DATABASE_URL + '?ssl=true'
+//const heroku = process.env.DATABASE_URL + '?ssl=true'
 
 const localPGConnection = `postgres://@localhost/housing-busters`
 module.exports = {

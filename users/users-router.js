@@ -72,9 +72,12 @@ router.get('/list', (req, res) => {
 })
 
 router.post('/:id/orders', (req, res) => { 
+// router.post('/orders', (req, res) => { 
     Users.addOrders(req.body, req.params.id)
     .then(users => { 
-        res.status(201).json(users)
+        console.log(users)
+        console.log('its fun')
+        res.status(200).json(users)
     })
     .catch(err => { 
         console.log('/users get error: ', err)

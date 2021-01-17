@@ -37,6 +37,14 @@ async function addOrders(input, urlId){
     const [id] = await db('Favorites').insert(input).returning('id');
     console.log('id: ', id)
     return await findOrdersById(id, urlId)
+    //return await findOrders();
+}
+
+async function findOrders(){
+    let orders = await db('Favorites as F')
+    .select('F.id', 'F.image', 'F.title', 'F.description', 'F.starRating', 'F.user_id')
+    //.where('F.id', OrderId)
+    return orders
 }
 
 async function findOrdersById(OrderId, userUrlId){
